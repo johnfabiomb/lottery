@@ -41,7 +41,7 @@ export class LotteryService {
   }
 
   set history (value: any) {
-    this._history.push(value)
+    this._history.unshift(value)
     sessionStorage.setItem('game_history', JSON.stringify(this._history))
   }
 

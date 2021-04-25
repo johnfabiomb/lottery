@@ -7,7 +7,7 @@
         <th scope="col">Result</th>
       </tr>
     </thead>
-    <tbody *ngFor='let row of this._lottery.history.reverse()'>
+    <tbody *ngFor='let row of this._lottery.history'>
         <tr>
             <th scope="row">
                 <div [style.backgroundColor]='row.winningBall.color' class="ball">
