@@ -1,0 +1,36 @@
+<div class="content">
+    <ng-container *ngIf='!_lottery.getWinningBall()'>
+        <h5>Numbers</h5>
+        <div class="grid">
+            <div *ngFor='let ball of this._lottery.getLotteryDrum()' class="ball-container">
+                <div class="selectable" [ngClass]='{"selected-ball": ball.selected }'>
+                    <div [style.backgroundColor]='ball.color' (click)='_lottery.selectBall(ball)' class="ball">
+                        <span>{{ball.number}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a *ngIf='showClear' class="c-pointer" (click)='_lottery.clearSelectedBalls()'>Clear selection</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf='_lottery.getWinningBall()'>
+        <div class="row">
+            <div class="col-12 result-content">
+                <h4>Result</h4>
+            </div>
+            <div class="col-12 result-content mt-3">
+                <div [style.backgroundColor]='_lottery.getWinningBall().color' class="ball">
+                    <span>{{_lottery.getWinningBall().number}}</span>
+                </div>
+            </div>
+            <div class="col-12 result-content mt-3">
+                <h3 *ngIf='_lottery.getWinningBall().selected' class="text-success">You won {{this._lottery.bet*1.5}} €</h3>
+                <h3 *ngIf='!_lottery.getWinningBall().selected' class="text-danger">You lost {{this._lottery.bet}} €</h3>
+            </div>
+        </div>
+    </ng-container>
+
+    
+</div>

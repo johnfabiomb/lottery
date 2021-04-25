@@ -1,0 +1,22 @@
+.ball{
+    display: flex;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    color: var(--bs-white);
+    cursor: pointer;
+    float: left;
+    margin: 1px;
+    font-size: 14px;
+    &_default{
+        background-color: #c9c9c9;
+        cursor: default;
+    }
+}
+
+.ball-comtainer{
+    display: flex;
+    justify-content: center;
+}

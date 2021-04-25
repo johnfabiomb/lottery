@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-7 col-lg-8 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <app-ball-selector></app-ball-selector>
+        </div>
+      </div>
+      <div  *ngIf='this._lottery.history.length' class="card mt-3">
+        <div class="card-body">
+          <app-game-history ></app-game-history>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-4 mt-2">
+      <app-bet-slip></app-bet-slip>
+    </div>
+  </div>
+</div>
+<div *ngIf='error' class="position-fixed bottom-0 left-0 top-0 p-3" style="z-index: 5">
+  <div [ngClass]='{"show": error}' class="toast align-items-center bg-danger text-white" role="alert"
+    aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        {{error}}
+      </div>
+    </div>
+  </div>
+</div>

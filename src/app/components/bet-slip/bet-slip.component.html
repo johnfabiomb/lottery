@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col mb-3 ball-comtainer">
+                <div *ngFor='let ball of selectedBalls' [style.backgroundColor]='ball.color'
+                    (click)='_lottery.selectBall(ball)' class="ball">
+                    <span>{{ball.number}}</span>
+                </div>
+                <div *ngFor='let ball of [].constructor(8-selectedBalls.length)' class="ball ball_default">
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5 mb-5">
+            <fieldset [disabled]="_lottery.getWinningBall()">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">{{selectedBalls.length}}x</span>
+                            <input type="number" min="0" [(ngModel)]='amount' class="form-control" placeholder="Amount"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <button (click)='setBet()' [disabled]='amount<=0 || selectedBalls.length==0'
+                            class="btn btn-primary w-100" [ngClass]='{"btn-success": _lottery.bet}'
+                            type="button">Ok</button>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center mt-2">
+        <h3>Total: {{_lottery.bet}} €</h3>
+    </div>
+    <div *ngIf='!_lottery.getWinningBall()' class="col-12 text-center mt-2">
+        <button [disabled]='!_lottery.bet || selectedBalls.length==0' (click)='placeBet()' [disabled]=''
+            class="btn btn-primary w-100 btn-lg" type="button">
+            Place bet
+        </button>
+    </div>
+    <div *ngIf='_lottery.getWinningBall()' class="col-12 text-center mt-2">
+        <button (click)='_lottery.newBet()' [disabled]='' class="btn btn-success w-100 btn-lg" type="button">
+            New Bet
+        </button>
+    </div>
+</div>

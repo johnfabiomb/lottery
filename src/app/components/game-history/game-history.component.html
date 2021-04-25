@@ -1,0 +1,22 @@
+<h4>Game History</h4>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Winning Ball</th>
+        <th scope="col">Bet</th>
+        <th scope="col">Result</th>
+      </tr>
+    </thead>
+    <tbody *ngFor='let row of this._lottery.history.reverse()'>
+        <tr>
+            <th scope="row">
+                <div [style.backgroundColor]='row.winningBall.color' class="ball">
+                    <span>{{row.winningBall.number}}</span>
+                </div>
+            </th>
+            <td>{{row.bet}} €</td>
+            <td *ngIf='row.winningBall.selected' class="text-success">{{row.result}} €</td>
+            <td *ngIf='!row.winningBall.selected' class="text-danger"> -{{row.result}} $</td>
+        </tr>
+    </tbody>
+</table>
