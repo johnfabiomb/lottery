@@ -19,7 +19,18 @@ export class LotteryService {
 
   private winningBall: Ball = null
 
-  // history
+  private _amount: number = 0
+
+  set amount (value: number) {
+    this._amount = value
+    this.bet = 0
+  }
+
+  get amount (): number {
+    return this._amount
+  }
+
+  // added a history
   private _history: any = []
 
   get history (): any {
@@ -32,7 +43,6 @@ export class LotteryService {
   set history (value: any) {
     this._history.push(value)
     sessionStorage.setItem('game_history', JSON.stringify(this._history))
-    console.log(this._history)
   }
 
   constructor () {
@@ -159,8 +169,24 @@ export class LotteryService {
     return this.winningBall
   }
 
+  setBet (countSelectedballs: number) {
+    if (this.validateBet(this.amount)) {
+      this.bet = countSelectedballs * this.amount
+    } else {
+      this.showError$('Minimum bet is 5 €')
+    }
+  }
+
+  validateBet (value) {
+    if (value >= 5) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   placeBet () {
-    const randon_index = Math.floor(Math.random() * 10) + 1
+    const randon_index = Math.floor(Math.random() * 9) + 1
     this.shuffle(this.lotteryDrum).then(
       (newlotteryDrum: Ball[]) => {
         this.winningBall = newlotteryDrum[randon_index]

@@ -7,8 +7,6 @@ import { LotteryService } from './services/lottery.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'goldenRace'
-
   error: any = null
 
   constructor (public _lottery: LotteryService) {

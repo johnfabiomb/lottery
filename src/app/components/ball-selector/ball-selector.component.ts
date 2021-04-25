@@ -15,7 +15,6 @@ export class BallSelectorComponent implements OnInit {
     this._lottery.getShowClear$().subscribe(
       showClear => {
         this.showClear = showClear
-        console.log(showClear)
       }
     )
   }

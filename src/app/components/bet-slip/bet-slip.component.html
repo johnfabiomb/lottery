@@ -16,12 +16,12 @@
                     <div class="col-7">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">{{selectedBalls.length}}x</span>
-                            <input type="number" min="0" [(ngModel)]='amount' class="form-control" placeholder="Amount"
+                            <input type="number" min="0" [(ngModel)]='_lottery.amount' class="form-control" placeholder="Amount"
                                 aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>
                     <div class="col-5">
-                        <button (click)='setBet()' [disabled]='amount<=0 || selectedBalls.length==0'
+                        <button (click)='_lottery.setBet(selectedBalls.length)' [disabled]='_lottery.amount<=0 || selectedBalls.length==0'
                             class="btn btn-primary w-100" [ngClass]='{"btn-success": _lottery.bet}'
                             type="button">Ok</button>
                     </div>
@@ -37,7 +37,7 @@
         <h3>Total: {{_lottery.bet}} €</h3>
     </div>
     <div *ngIf='!_lottery.getWinningBall()' class="col-12 text-center mt-2">
-        <button [disabled]='!_lottery.bet || selectedBalls.length==0' (click)='placeBet()' [disabled]=''
+        <button [disabled]='!_lottery.bet || selectedBalls.length==0' (click)='_lottery.placeBet()' [disabled]=''
             class="btn btn-primary w-100 btn-lg" type="button">
             Place bet
         </button>

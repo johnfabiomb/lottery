@@ -7,9 +7,7 @@ import { LotteryService } from 'src/app/services/lottery.service'
   styleUrls: ['./game-history.component.scss']
 })
 export class GameHistoryComponent implements OnInit {
-  constructor (public _lottery: LotteryService) {
-
-  }
+  constructor (public _lottery: LotteryService) { }
 
   ngOnInit (): void {
   }
