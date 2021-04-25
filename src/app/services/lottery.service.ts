@@ -192,6 +192,7 @@ export class LotteryService {
         this.winningBall = newlotteryDrum[randon_index]
         const result = (this.winningBall.selected) ? this.bet * 1.5 : this.bet
         this.history = { winningBall: { ...this.winningBall }, bet: this.bet, result: result }
+        window.scroll(0,0)
       }
     )
   }

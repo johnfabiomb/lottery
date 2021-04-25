@@ -17,7 +17,7 @@
 
     <ng-container *ngIf='_lottery.getWinningBall()'>
         <div class="row">
-            <div class="col-12 result-content">
+            <div class="col-12 result-content mt-3">
                 <h4>Result</h4>
             </div>
             <div class="col-12 result-content mt-3">
@@ -25,7 +25,7 @@
                     <span>{{_lottery.getWinningBall().number}}</span>
                 </div>
             </div>
-            <div class="col-12 result-content mt-3">
+            <div class="col-12 result-content mt-3 mb-3">
                 <h3 *ngIf='_lottery.getWinningBall().selected' class="text-success">You won {{this._lottery.bet*1.5}} €</h3>
                 <h3 *ngIf='!_lottery.getWinningBall().selected' class="text-danger">You lost {{this._lottery.bet}} €</h3>
             </div>
